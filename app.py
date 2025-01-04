@@ -1,6 +1,5 @@
 from flask import Flask, render_template, redirect, url_for, request
-from flask_login import LoginManager, login_user, logout_user, login_required,
-current_user
+from flask_login import LoginManager, login_user, logout_user, login_required,current_user
 from models import db, User
 import datetime
 
@@ -13,12 +12,14 @@ login_manager = LoginManager()
 login_manager.init_app(app) 
 login_manager.login_view = 'login'
 
-
+with app.app_context():
+    db.create_all()
 
 if __name__ == '__main__': 
-app.run(debug=True)
+    app.run(debug=True)
 
 #Calcolatore Codice Fiscale 
+
     def codice_cognome(cognome):
         consonanti = ''.join([c for c in cognome if c.isalpha() and c not in 'AEIOU'])
         vocali = ''.join([c for c in cognome if c.isalpha() and c in 'AEIOU'])
@@ -73,7 +74,7 @@ app.run(debug=True)
         somma = sum(dispari[valori[cf_parziale[i]]] if i % 2 == 0 else pari[valori[cf_parziale[i]]] for i in range(15))
         return chr((somma % 26) + 65)
 
-    def genera_codice_fiscale(nome, cognome, data_nascita, sesso, comune):
+    def calcola_cf(nome, cognome, data_nascita, sesso, comune):
         cf = codice_cognome(cognome)
         cf += codice_nome(nome)
         cf += codice_data_nascita(data_nascita, sesso)
@@ -82,3 +83,26 @@ app.run(debug=True)
         return cf
 
 
+@app.route('/register', methods=['GET', 'POST'])
+def register():
+    if request.method == 'POST':
+        #Prendere i dati dal database
+        username = request.form['username'] 
+        password = request.form['password']
+        nome = request.form['nome']
+        cognome = request.form['cognome']
+        sesso = request.form['sesso']
+        data_nascita = datetime.strptime(request.form['data_nascita'], '%Y-%m-%d')
+        luogo_nascita = request.form['luogo_nascita']
+        comune = request.form['comune']
+        #Controllo per vedere se esiste già
+        if User.query.filter_by(username=username).first():
+            return render_template('register.html', error="Questo username è già in uso.")
+        #Invio dati al metodo calcola_cf
+        codice_fiscale = calcola_cf(nome, cognome, data_nascita,luogo_nascita,sesso,comune)
+        new_user = User(username=username, password=password, nome=nome,cognome=cognome,data_nascita= data_nascita,luogo_nascita = luogo_nascita,sesso=sesso,comune=comune, codice_fiscale = codice_fiscale)
+        db.session.add(new_user)
+        db.session.commit()
+        
+        return redirect(url_for('login'))
+    return render_template('register.html', error=None)

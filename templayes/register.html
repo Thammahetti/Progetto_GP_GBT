@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+    <head>
+
+    </head>
+    <body>
+        <h2>Registrazione - REGIONE LOMBARDIA</h2>
+        {%if error%}
+        <p>{{error}}</p>
+        {{%endif%}}
+        <form method="POST">
+            <label>Username:</label><br>
+            <input type="text" name="username" required><br>
+            <label>Password:</label><br>
+            <input type="password" name="password" required><br>
+            <label>Nome:</label><br>
+            <input type="text" name="nome" required><br>
+            <label>Cognome:</label><br>
+            <input type="text" name="cognome" required><br>
+            <label>Sesso (M/F):</label><br>
+            <input type="text" name="sesso" required><br>
+            <label>Data di nascita:</label><br>
+            <input type="date" name="data_nascita" required><br>
+            <label>Luogo di nascita:</label><br>
+            <input type="text" name="luogo_nascita" required><br>
+            <label>Provincia:</label><br>
+            <input type="text" name="prov" required><br>
+            <button type="submit">Registrati</button>
+        </form>
+        <p>Hai già account?<a href="login.html">Clicca qui</a></p>
+
+    </body>
+</html>

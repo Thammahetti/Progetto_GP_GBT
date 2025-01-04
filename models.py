@@ -13,4 +13,4 @@ class User(UserMixin, db.Model):
     luogo_nascita = db.Column(db.String(255), nullable=False)
     codice_fiscale = db.Column(db.String(16),unique=True, nullable=True)
     sesso = db.Column(db.String(2), nullable=False)
-    prov = db.Column(db.String(5), nullable=False)
+    comune = db.Column(db.String(5), nullable=False)
