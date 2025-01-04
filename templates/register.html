@@ -5,9 +5,9 @@
     </head>
     <body>
         <h2>Registrazione - REGIONE LOMBARDIA</h2>
-        {%if error%}
+        {% if error %}
         <p>{{error}}</p>
-        {{%endif%}}
+        {% endif %}
         <form method="POST">
             <label>Username:</label><br>
             <input type="text" name="username" required><br>
@@ -23,8 +23,9 @@
             <input type="date" name="data_nascita" required><br>
             <label>Luogo di nascita:</label><br>
             <input type="text" name="luogo_nascita" required><br>
-            <label>Provincia:</label><br>
-            <input type="text" name="prov" required><br>
+            <label>Comune:</label><br>
+            <input type="text" name="comune" required><br>
+            
             <button type="submit">Registrati</button>
         </form>
         <p>Hai già account? <a href="login.html">Clicca qui</a></p>

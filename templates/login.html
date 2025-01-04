@@ -1,13 +1,14 @@
 <!DOCTYPE html>
 <html>
     <head>
-
+        <title>Login</title>
     </head>
     <body>
-        <h2>Registrazione - REGIONE LOMBARDIA</h2>
-        {%if error%}
-        <p>{{error}}</p>
-        {{%endif%}}
+        <h2>Login - REGIONE LOMBARDIA</h2>
+
+        {% if error %}
+            <p>{{ error }}</p>
+        {% endif %}
         <form method="POST">
             <label>Username:</label><br>
             <input type="text" name="username" required><br>
@@ -16,7 +17,7 @@
 
             <button type="submit">Accedi</button>
         </form>
-        <p>Non hai un'account? <a href="login.html">Clicca qui</a></p>
+        <p>Non hai un'account? <a href="{{ url_for('register') }}">Clicca qui</a></p>
 
     </body>
 </html>
