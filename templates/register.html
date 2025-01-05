@@ -2,36 +2,35 @@
 <html>
     <head>
         <link href="../static/css/register.css" rel="stylesheet">
+        <h2 class="title">- REGIONE LOMBARDIA  -</h2>
+        <h2 class="title">Registrazione</h2>
     </head>
-    <body>
+    <body> 
+        {% if error %}
+        <p>{{error}}</p>
+        {% endif %}
         <div class="container">
-            <h2 class="title">Registrazione - REGIONE LOMBARDIA</h2>
-            {% if error %}
-            <p>{{error}}</p>
-            {% endif %}
-            <div class="container2">
-                <form method="POST">
-                    <label class="label">Username:</label><br>
-                    <input type="text" name="username" required class="input"><br>
-                    <label class="label">Password:</label><br>
-                    <input type="password" name="password" required class="input"><br>
-                    <label class="label">Nome:</label><br>
-                    <input type="text" name="nome" required class="input"><br>
-                    <label class="label">Cognome:</label><br>
-                    <input type="text" name="cognome" required class="input"><br>
-                    <label class="label">Sesso (M/F):</label><br>
-                    <input type="text" name="sesso" required class="input"><br>
-                    <label class="label">Data di nascita:</label><br>
-                    <input type="date" name="data_nascita" required class="input"><br>
-                    <label class="label">Luogo di nascita:</label><br>
-                    <input type="text" name="luogo_nascita" required class="input"><br>
-                    <label class="label">Comune:</label><br>
-                    <input type="text" name="comune" required class="input"><br><br>
-                    
-                    <button type="submit" class="registrati">Registrati</button>
-                </form>
-                <p style="font-size: large;">Hai già account? <a href="{{ url_for('login') }}">Clicca qui</a></p>
-            </div>
+            <form method="POST">
+                <label class="label">Username:</label><br>
+                <input type="text" name="username" required class="input"><br>
+                <label class="label">Password:</label><br>
+                <input type="password" name="password" required class="input"><br>
+                <label class="label">Nome:</label><br>
+                <input type="text" name="nome" required class="input"><br>
+                <label class="label">Cognome:</label><br>
+                <input type="text" name="cognome" required class="input"><br>
+                <label class="label">Sesso (M/F):</label><br>
+                <input type="text" name="sesso" required class="input"><br>
+                <label class="label">Data di nascita:</label><br>
+                <input type="date" name="data_nascita" required class="input"><br>
+                <label class="label">Luogo di nascita:</label><br>
+                <input type="text" name="luogo_nascita" required class="input"><br>
+                <label class="label">Comune:</label><br>
+                <input type="text" name="comune" required class="input"><br><br>
+                
+                <button type="submit" class="registrati">Registrati</button>
+            </form>
+            <p style="font-size: large;">Hai già account? <a href="{{ url_for('login') }}">Clicca qui</a></p>
         </div>
     </body>
 </html>

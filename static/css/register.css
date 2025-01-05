@@ -1,12 +1,9 @@
-.container{
-    padding-top: 20px;
-}
 .title{
     color: rgb(0, 107, 45);
     font-size: xx-large;
     text-align: center;
 }
-.container2{
+.container{
     width: 40%;
     text-align: center;
     margin-left: 28%;
