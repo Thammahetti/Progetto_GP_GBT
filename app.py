@@ -25,20 +25,21 @@ with app.app_context():
 
 # Calcolatore Codice Fiscale
 def codice_cognome(cognome):
-    consonanti = ''.join([c for c in cognome if c.isalpha() and c not in 'AEIOU'])
-    vocali = ''.join([c for c in cognome if c.isalpha() and c in 'AEIOU'])
-    codice = (consonanti + vocali + 'XXX')[:3].upper()
+    consonanti = ''.join([c for c in cognome.upper() if c.isalpha() and c not in 'AEIOU'])
+    vocali = ''.join([c for c in cognome.upper() if c.isalpha() and c in 'AEIOU'])
+    codice = (consonanti + vocali + 'XXX')[:3]
     return codice
 
 def codice_nome(nome):
-    consonanti = ''.join([c for c in nome if c.isalpha() and c not in 'AEIOU'])
-    vocali = ''.join([c for c in nome if c.isalpha() and c in 'AEIOU'])
+
+    consonanti = ''.join([c for c in nome.upper() if c.isalpha() and c not in 'AEIOU'])
+    vocali = ''.join([c for c in nome.upper() if c.isalpha() and c in 'AEIOU'])
     if len(consonanti) >= 4:
-        consonanti = consonanti[0] + consonanti[2] + consonanti[3]
-        codice = (consonanti + vocali + 'XXX')[:3].upper()
+        codice = consonanti[0] + consonanti[2] + consonanti[3]
     else:
-        codice = (consonanti + vocali + 'XXX')[:3].upper()
+        codice = (consonanti + vocali + 'XXX')[:3]
     return codice
+
 
 def codice_data_nascita(data_nascita, sesso):
     mese_codice = 'ABCDEHLMPRST'
