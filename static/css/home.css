@@ -32,13 +32,18 @@
 
 .right{
     float: left;
-    margin-left: 55%;
+    margin-left: 49%;
     font-size: x-large;
-    top: -250px;
+    top: -350px;
     position: relative;
     left: 13%;
 
 }
 .sesso{
-
+    top: -50px;
+    margin-left: 129%;
+    padding-top: 23px;
+}
+.data_scadenza{
+    margin-bottom: 55px;
 }

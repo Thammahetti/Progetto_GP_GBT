@@ -223,7 +223,11 @@ def login():
 @app.route('/home')
 @login_required
 def home():
-    return render_template('home.html', error=None)
+    giornosuccesivo = datetime.now().day + 1 
+    meseattuale = datetime.now().month
+    annoattuale = datetime.now().year
+    data_scadenza = f"{giornosuccesivo}-{meseattuale}-{annoattuale}"
+    return render_template('home.html', error=None, data_scadenza = data_scadenza)
 
 
 if __name__ == '__main__': 
