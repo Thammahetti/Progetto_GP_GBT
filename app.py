@@ -223,7 +223,8 @@ def login():
 @app.route('/home')
 @login_required
 def home():
-     return f"Benvenuto, {current_user.nome} {current_user.cognome}. Il tuo codice fiscale è {current_user.codice_fiscale}"
+    return render_template('home.html', error=None)
+
 
 if __name__ == '__main__': 
     

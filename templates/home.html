@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link href="../static/css/home.css" rel="stylesheet">
+    </head>
+    <body>
+        <p style="text-align: center;">Benvenuto, {{current_user.nome}} {{current_user.cognome}}. Il tuo codice fiscale è {{current_user.codice_fiscale}}</p>
+        <div class="tessera">
+            <div class="left">    
+                <p class="cf">{{current_user.codice_fiscale}}</p>
+                <p class="cognome">{{current_user.cognome}}</p>
+                <p class="nome">{{current_user.nome}}</p>
+                <p class="citta">{{current_user.luogo_nascita}}</p>
+                <p class="citta">{{current_user.comune}}</p>
+                <p class="dataN">{{current_user.data_nascita}}</p>
+            </div>
+            <div class="right">
+                <p class="sesso">{{current_user.sesso}}</p>
+            </div>
+        </div>
+    </body>   
+        
+
