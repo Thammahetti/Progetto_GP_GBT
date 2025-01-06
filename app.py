@@ -2,6 +2,7 @@ from flask import Flask, render_template, redirect, url_for, request
 from flask_login import LoginManager, login_user, logout_user, login_required,current_user
 from models import db, User
 from datetime import datetime
+from werkzeug.security import generate_password_hash, check_password_hash
 
 app = Flask(__name__)
 app.secret_key = 'key_sessione_user' 
@@ -184,6 +185,7 @@ def register():
         #Prendere i dati dal database
         username = request.form['username'] 
         password = request.form['password']
+        password_hash = generate_password_hash(password)
         nome = request.form['nome']
         cognome = request.form['cognome']
         sesso = request.form['sesso']
@@ -196,7 +198,7 @@ def register():
             return render_template('register.html', error="Questo username è già in uso.")
         #Invio dati al metodo calcola_cf
         codice_fiscale = calcola_cf(nome, cognome, data_nascita,sesso,comune)
-        new_user = User(username=username, password=password, nome=nome,cognome=cognome,data_nascita= data_nascita,luogo_nascita = luogo_nascita,sesso=sesso,comune=comune, codice_fiscale = codice_fiscale, data_emissione = data_emissione)
+        new_user = User(username=username, password=password_hash, nome=nome,cognome=cognome,data_nascita= data_nascita,luogo_nascita = luogo_nascita,sesso=sesso,comune=comune, codice_fiscale = codice_fiscale, data_emissione = data_emissione)
         db.session.add(new_user)
         db.session.commit()
         
@@ -213,7 +215,7 @@ def login():
         password = request.form['password']
         #cerca user su db
         user = User.query.filter_by(username=username, password=password).first()
-        if user:
+        if user and check_password_hash(user.password, password):
             login_user(user)
             return redirect(url_for('home'))
         return render_template('login.html', error="Credenziali non valide.") 
