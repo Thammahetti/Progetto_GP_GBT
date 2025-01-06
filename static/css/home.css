@@ -1,16 +1,18 @@
-.tessera{
-    background-image: url(https://www.metropolitano.it/wp-content/uploads/2022/08/tessera-sanitaria.jpg); 
-    margin-left: auto;
-    margin-right: auto;
+.tessera {
+    position: relative;
+    background-image: url(https://www.metropolitano.it/wp-content/uploads/2022/08/tessera-sanitaria.jpg);
     background-repeat: no-repeat;
-    text-align: center;
-    background-size: 900px;
-    height: 800px;
-    background-position-x: center;
+    background-size: 100% 100%;
+    width: 900px;
+    height: 650px;
+    margin: 0 auto;
 }
+
+
+
 .left{
     float: right;
-    padding-top: 278px;
+    padding-top: 245px;
     margin-right: 52%;
 }
 .cf{
@@ -32,18 +34,23 @@
 
 .right{
     float: left;
-    margin-left: 49%;
+    margin-left: 55%;
     font-size: x-large;
-    top: -350px;
+    top: -230px;
     position: relative;
-    left: 13%;
+    left: 36%;
 
 }
-.sesso{
-    top: -50px;
-    margin-left: 129%;
-    padding-top: 23px;
+.scadenza {
+    position: absolute;
+    top: 90%;
+    right: 10%;
+    color: black;
 }
-.data_scadenza{
-    margin-bottom: 55px;
+.sesso {
+    position: absolute; 
+    top: 60%;
+    left: 78%;
+    color: black;
+    transform: translate(-50%, -50%);
 }

@@ -14,3 +14,5 @@ class User(UserMixin, db.Model):
     codice_fiscale = db.Column(db.String(16),unique=True, nullable=True)
     sesso = db.Column(db.String(2), nullable=False)
     comune = db.Column(db.String(5), nullable=False)
+    data_emissione = db.Column(db.Date, nullable=False)
+

@@ -188,6 +188,7 @@ def register():
         cognome = request.form['cognome']
         sesso = request.form['sesso']
         data_nascita = datetime.strptime(request.form['data_nascita'], '%Y-%m-%d')
+        data_emissione = datetime.now()
         luogo_nascita = request.form['luogo_nascita']
         comune = request.form['comune']
         #Controllo per vedere se esiste già
@@ -195,7 +196,7 @@ def register():
             return render_template('register.html', error="Questo username è già in uso.")
         #Invio dati al metodo calcola_cf
         codice_fiscale = calcola_cf(nome, cognome, data_nascita,sesso,comune)
-        new_user = User(username=username, password=password, nome=nome,cognome=cognome,data_nascita= data_nascita,luogo_nascita = luogo_nascita,sesso=sesso,comune=comune, codice_fiscale = codice_fiscale)
+        new_user = User(username=username, password=password, nome=nome,cognome=cognome,data_nascita= data_nascita,luogo_nascita = luogo_nascita,sesso=sesso,comune=comune, codice_fiscale = codice_fiscale, data_emissione = data_emissione)
         db.session.add(new_user)
         db.session.commit()
         
@@ -223,9 +224,9 @@ def login():
 @app.route('/home')
 @login_required
 def home():
-    giornosuccesivo = datetime.now().day + 1 
-    meseattuale = datetime.now().month
-    annoattuale = datetime.now().year
+    giornosuccesivo = current_user.data_emissione.day + 1 
+    meseattuale = current_user.data_emissione.month
+    annoattuale = current_user.data_emissione.year
     data_scadenza = f"{giornosuccesivo}-{meseattuale}-{annoattuale}"
     return render_template('home.html', error=None, data_scadenza = data_scadenza)
 
