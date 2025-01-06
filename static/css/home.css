@@ -7,9 +7,6 @@
     height: 650px;
     margin: 0 auto;
 }
-
-
-
 .left{
     float: right;
     padding-top: 245px;
@@ -34,23 +31,28 @@
 
 .right{
     float: left;
-    margin-left: 55%;
+    margin-left: 35%;
     font-size: x-large;
-    top: -230px;
+    top: -330px;
     position: relative;
     left: 36%;
-
+    max-width: 400px;
 }
 .scadenza {
     position: absolute;
-    top: 90%;
-    right: 10%;
+    left: 30%;
     color: black;
 }
 .sesso {
     position: absolute; 
-    top: 60%;
-    left: 78%;
+    top: 29%;
+    left: 70%;
     color: black;
     transform: translate(-50%, -50%);
+}
+.img{
+    margin-top: 187px;
+    width: 250px;
+    margin-left: -32%;
+
 }
