@@ -106,7 +106,6 @@ def codice_comune(comune_str):
     'PIEDIMONTE SAN GERMANO': 'E396',
     'MERATE': 'E402',
     'FAGNANO OLONA': 'E387',
-    'SESTO SAN GIOVANNI': 'I415',
     'MAZZANO': 'B928',
     'SOMAGLIA': 'F776',
     'TRADATE': 'E725',
@@ -226,10 +225,10 @@ def login():
 @app.route('/home')
 @login_required
 def home():
-    giornosuccesivo = current_user.data_emissione.day + 1 
+    giornoattuale = current_user.data_emissione.day 
     meseattuale = current_user.data_emissione.month
-    annoattuale = current_user.data_emissione.year
-    data_scadenza = f"{giornosuccesivo}-{meseattuale}-{annoattuale}"
+    annosei = current_user.data_emissione.year + 6
+    data_scadenza = f"{annosei}-{meseattuale}-{giornoattuale}"
     return render_template('home.html', error=None, data_scadenza = data_scadenza)
 
 

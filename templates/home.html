@@ -3,8 +3,9 @@
     <head>
         <link href="../static/css/home.css" rel="stylesheet">
     </head>
-    <body>
-        <p style="text-align: center;">Benvenuto, {{current_user.nome}} {{current_user.cognome}}. Il tuo codice fiscale è {{current_user.codice_fiscale}}</p>
+    <body style="border: 5px solid rgb(119, 162, 255); border-radius: 20px; width: 1300px; margin-left: auto; margin-right: auto; margin-top: 350px;">
+        <h1 style="text-align: center; font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; font-size: 70px; color: rgb(21, 61, 148);">Benvenuto</h1>
+        <h1 style="text-align: center; font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; font-size: 50px; color: rgb(0, 22, 68)"> {{current_user.nome}} {{current_user.cognome}}</h1>
         <div class="tessera">
             <div class="left">    
                 <p class="cf">{{current_user.codice_fiscale}}</p>
